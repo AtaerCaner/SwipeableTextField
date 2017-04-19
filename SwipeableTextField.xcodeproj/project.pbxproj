@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1360BC131EA778DE008F8432 /* SwipeableTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 1360BC111EA778DE008F8432 /* SwipeableTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1360BC1B1EA77ABB008F8432 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1360BC1A1EA77ABB008F8432 /* MaterialTextField.swift */; };
+		1360BC1B1EA77ABB008F8432 /* SwipeableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1360BC1A1EA77ABB008F8432 /* SwipeableTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1360BC0E1EA778DE008F8432 /* SwipeableTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeableTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1360BC111EA778DE008F8432 /* SwipeableTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeableTextField.h; sourceTree = "<group>"; };
 		1360BC121EA778DE008F8432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1360BC1A1EA77ABB008F8432 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		1360BC1A1EA77ABB008F8432 /* SwipeableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		1360BC191EA77928008F8432 /* TextFieldClass */ = {
 			isa = PBXGroup;
 			children = (
-				1360BC1A1EA77ABB008F8432 /* MaterialTextField.swift */,
+				1360BC1A1EA77ABB008F8432 /* SwipeableTextField.swift */,
 			);
 			name = TextFieldClass;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1360BC1B1EA77ABB008F8432 /* MaterialTextField.swift in Sources */,
+				1360BC1B1EA77ABB008F8432 /* SwipeableTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

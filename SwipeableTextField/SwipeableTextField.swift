@@ -8,31 +8,32 @@
 
 import UIKit
 
-protocol MaterialTextFieldDelegate  {
-    func materialTextFieldShouldBeginEditing(_ materialTextField: MaterialTextField) -> Bool
-    func materialTextFieldDidBeginEditing(_ materialTextField: MaterialTextField)
-    func materialTextFieldShouldEndEditing(_ materialTextField: MaterialTextField) -> Bool
-    func materialTextFieldDidEndEditing(_ materialTextField: MaterialTextField)
-    func materialTextFieldDidEndEditing(_ materialTextField: MaterialTextField, reason: UITextFieldDidEndEditingReason)
-    func materialTextField(_ materialTextField: MaterialTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    func materialTextFieldShouldClear(_ materialTextField: MaterialTextField) -> Bool
-    func materialTextFieldShouldReturn(_ materialTextField: MaterialTextField) -> Bool
+protocol SwipeableTextFieldDelegate  {
+    func swipeableTextFieldShouldBeginEditing(_ swipeableTextField: SwipeableTextField) -> Bool
+    func swipeableTextFieldDidBeginEditing(_ swipeableTextField: SwipeableTextField)
+    func swipeableTextFieldShouldEndEditing(_ swipeableTextField: SwipeableTextField) -> Bool
+    func swipeableTextFieldDidEndEditing(_ swipeableTextField: SwipeableTextField)
+    func swipeableTextFieldDidEndEditing(_ swipeableTextField: SwipeableTextField, reason: UITextFieldDidEndEditingReason)
+    func swipeableTextField(_ swipeableTextField: SwipeableTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    func swipeableTextFieldShouldClear(_ swipeableTextField: SwipeableTextField) -> Bool
+    func swipeableTextFieldShouldReturn(_ swipeableTextField: SwipeableTextField) -> Bool
     
     
 }
 
-extension MaterialTextFieldDelegate {
-    func materialTextFieldShouldBeginEditing(_ materialTextField: MaterialTextField) -> Bool { return true}
-    func materialTextFieldDidBeginEditing(_ materialTextField: MaterialTextField) {}
-    func materialTextFieldShouldEndEditing(_ materialTextField: MaterialTextField) -> Bool {return true}
-    func materialTextFieldDidEndEditing(_ materialTextField: MaterialTextField) {}
-    func materialTextFieldDidEndEditing(_ materialTextField: MaterialTextField, reason: UITextFieldDidEndEditingReason) {}
-    func materialTextField(_ materialTextField: MaterialTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {return true}
-    func materialTextFieldShouldClear(_ materialTextField: MaterialTextField) -> Bool {return true}
-    func materialTextFieldShouldReturn(_ materialTextField: MaterialTextField) -> Bool {return true}
+extension SwipeableTextFieldDelegate {
+    func swipeableTextFieldShouldBeginEditing(_ swipeableTextField: SwipeableTextField) -> Bool { return true}
+    func swipeableTextFieldDidBeginEditing(_ swipeableTextField: SwipeableTextField) {}
+    func swipeableTextFieldShouldEndEditing(_ swipeableTextField: SwipeableTextField) -> Bool {return true}
+    func swipeableTextFieldDidEndEditing(_ swipeableTextField: SwipeableTextField) {}
+    func swipeableTextFieldDidEndEditing(_ swipeableTextField: SwipeableTextField, reason: UITextFieldDidEndEditingReason) {}
+    func swipeableTextField(_ swipeableTextField: SwipeableTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {return true}
+    func swipeableTextFieldShouldClear(_ swipeableTextField: SwipeableTextField) -> Bool {return true}
+    func swipeableTextFieldShouldReturn(_ swipeableTextField: SwipeableTextField) -> Bool {return true}
 }
 
-class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegate {
+
+class SwipeableTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegate {
     private let stepsTextField = UITextField()
     private let textLabel = UILabel()
     private let stackView   = UIStackView()
@@ -56,7 +57,7 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
     
     var shakeIsEnable = true
     
-    var delegate: MaterialTextFieldDelegate!
+    var delegate: SwipeableTextFieldDelegate!
     
     var keyboardType: UIKeyboardType {
         get {
@@ -259,7 +260,7 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
         changeBorderColor(color: selectionBorderColor)
         
         if let del = delegate {
-            returnType = del.materialTextField(self, shouldChangeCharactersIn: range, replacementString: string)
+            returnType = del.swipeableTextField(self, shouldChangeCharactersIn: range, replacementString: string)
         }
         
         return returnType
@@ -270,17 +271,9 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
         textField.endEditing(true)
         var returnType = true
         
-        //        if moveToNextField {
-        //            if let nextMaterialView = self.superview?.viewWithTag(self.tag + 1){
-        //                let nextTextField = nextMaterialView.subviews[0].subviews[1] as! UITextField
-        //                if nextMaterialView.alpha != 0.0 && !nextMaterialView.isHidden {
-        //                    nextTextField.becomeFirstResponder()
-        //                }
-        //            }
-        //        }
         
         if let del = delegate {
-            returnType = del.materialTextFieldShouldReturn(self)
+            returnType = del.swipeableTextFieldShouldReturn(self)
         }
         
         return returnType
@@ -303,7 +296,7 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
         changeBorderColor(color: selectionBorderColor)
         
         if let del = delegate {
-            returnType = del.materialTextFieldShouldBeginEditing(self)
+            returnType = del.swipeableTextFieldShouldBeginEditing(self)
         }
         return returnType
     }
@@ -312,7 +305,7 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
         var returnType = true
         changeBorderColor(color: _nonSelectionBorderColor)
         if let del = delegate {
-            returnType = del.materialTextFieldShouldEndEditing(self)
+            returnType = del.swipeableTextFieldShouldEndEditing(self)
         }
         return returnType
     }
@@ -407,26 +400,26 @@ class MaterialTextField: UIView, UITextFieldDelegate, UIGestureRecognizerDelegat
     internal func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if let del = delegate {
-            del.materialTextFieldDidBeginEditing(self)
+            del.swipeableTextFieldDidBeginEditing(self)
         }
     }
     
     internal func textFieldDidEndEditing(_ textField: UITextField) {
         if let del = delegate {
-            del.materialTextFieldDidEndEditing(self)
+            del.swipeableTextFieldDidEndEditing(self)
         }
     }
     
     internal func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if let del = delegate {
-            del.materialTextFieldDidEndEditing(self, reason: reason)
+            del.swipeableTextFieldDidEndEditing(self, reason: reason)
         }
     }
     
     internal func textFieldShouldClear(_ textField: UITextField) -> Bool {
         var returnType = true
         if let del = delegate {
-            returnType = del.materialTextFieldShouldClear(self)
+            returnType = del.swipeableTextFieldShouldClear(self)
         }
         return returnType
     }
