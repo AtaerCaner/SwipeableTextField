@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 # 1
 s.platform = :ios
 s.ios.deployment_target = '10.0'
-s.name = "SwipeableField"
+s.name = "SwipeableTextField"
 s.summary = "Your text field's hint swipe up when you enter something and it looks cool"
 s.requires_arc = true
 
